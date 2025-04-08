@@ -1,0 +1,24 @@
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# Environment files
+.env
+
+# Dependency directories
+jspm_packages/
+
+# npm package lock file
+package-lock.json
+
+# VS Code settings
+.vscode/
+
+# Mac system files
+.DS_Store
