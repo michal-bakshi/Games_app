@@ -1,24 +1,63 @@
-# Games_app
-# אתר משחקים - פרויקט React
+# Games App
 
-פרויקט זה הוא אתר משחקים ב-React, שמספק למשתמשים את האפשרות להרשם, להתחבר, להוסיף משחקים לעגלה ולבצע קנייה של המשחקים.
+## Overview
+**Games App** is a full‑stack project with a **Node.js/Express** backend and a **React** frontend. It supports game catalog management, user accounts, history tracking, and a shopping‑bag flow.
 
-## תיאור
-האתר כולל את הפונקציות הבסיסיות הבאות:
-- **הרשמה** - משתמשים יכולים להירשם עם דוא"ל וסיסמה.
-- **התחברות** - משתמשים יכולים להתחבר עם פרטי החשבון שלהם.
-- **הוספה לעגלה** - משתמשים יכולים להוסיף משחקים לעגלת הקניות שלהם.
-- **קנייה** - לאחר שמצאו את המשחקים שהם רוצים, משתמשים יכולים לבצע קנייה ולעבור לתשלום.
+## Features
+- **CRUD** for games, categories, users, and history
+- **REST API** with structured routes, controllers, and schemas
+- **UI pages** for home, lists, details, auth, personal area, and cart
+- **Global state** with Redux
+- **Responsive design** using Bootstrap / React‑Bootstrap
 
-## דרישות
-לפני שמריצים את הפרויקט, יש לוודא כי קיימת סביבת עבודה עם Node.js ו-NPM.
+## Tech Stack
+- **Backend:** Node.js, Express, MongoDB, Mongoose, CORS
+- **Frontend:** React, React Router, Redux, Axios, Bootstrap, React‑Bootstrap
+- **Tooling:** Nodemon, React Scripts
 
-- **Node.js** - גרסה 14 ומעלה
-- **NPM** - גרסה 6 ומעלה
+## Project Structure
+```
+backend/
+  app.js
+  controllers/
+  route/
+  schema/
+frontend/my-app/
+  src/
+  public/
+```
 
-## התקנה והפעלה
+## How To Run
+### Prerequisites
+- **Node.js** 18+ (recommended)
+- **MongoDB** (local or Atlas)
 
-1. **התקנת התלויות:**
-   לאחר ש clonning של הפרויקט, יש להריץ את הפקודה הבאה כדי להתקין את כל התלויות הדרושות:
-   ```bash
-   npm install
+### Backend
+```bash
+cd backend
+npm install
+npm start
+```
+Set **MONGODB_URI** in your environment or update the connection string inside `backend/app.js`.
+
+### Frontend
+```bash
+cd frontend/my-app
+npm install
+npm start
+```
+Update the API base URL in `frontend/my-app/src/axios` if needed.
+
+## API Overview
+Routes are grouped by feature under `backend/route`:
+- **GameRouter**
+- **CategoryRoute**
+- **UserRoute**
+- **historyRoute**
+
+## Scripts
+- **Backend:** `npm start`
+- **Frontend:** `npm start`, `npm run build`, `npm test`, `npm run eject`
+
+## Notes
+- Game images live in `backend/pic`.
