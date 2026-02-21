@@ -17,5 +17,3 @@ export const deleteCatById=(id)=>{
     return axios.delete(`${url}/delete/${id}`)
 
 }
-
-//שליפות לפי ID

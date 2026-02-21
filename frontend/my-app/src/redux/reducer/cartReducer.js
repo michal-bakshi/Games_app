@@ -1,5 +1,5 @@
-// cartReducer.js
 import {produce} from 'immer'
+
 export const initialState = {
     cart: [ ]
   };

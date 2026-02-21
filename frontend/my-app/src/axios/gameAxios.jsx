@@ -19,10 +19,5 @@ export const deleteGameById=(id)=>{
 }
 export const getGameByKatId=(id)=>{
     return axios.get(`${url}/getByCaterory/${id}`)
-
 }
 
-
-// gr.get('/getById/:id',gameController.getById)
-// gr.get('/getByCaterory/:cid',gameController.getByCaterory)
-// gr.get('/getByNameAndPass/:name/:price',gameController.getByNameAndPass)

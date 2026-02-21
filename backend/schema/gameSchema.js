@@ -1,4 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
+
 const game =  Schema({
     name:String,
     price:Number,

@@ -1,4 +1,3 @@
-import kategoryReducer  from "./reducer/kategoryReducer"
 
 export const add_cat=(cat)=>{
   return {type:"ADD_CATEGORY",payload:cat}

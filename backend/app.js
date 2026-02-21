@@ -1,21 +1,23 @@
 import express from 'express'
+import dotenv from 'dotenv';
 import mongoose from 'mongoose'
 import cr from './route/CategoryRoute.js'
 import gr from './route/GameRouter.js'
 import ur from './route/UserRoute.js'
 import hr from './route/historyRoute.js'
 import cors from 'cors';
+
+dotenv.config();
 const app=express()
 app.use(cors());
 
 
 
-app.listen("9090",()=>{
+app.listen(process.env.PORT || 9090,()=>{
     console.log("server run")
 })
 
-
-mongoose.connect('mongodb://0.0.0.0:27017/game_shop')
+mongoose.connect(process.env.MONGO_URI)
    .then(()=>{
        console.log("connect to mongodb")
    })

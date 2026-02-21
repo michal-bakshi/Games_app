@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearCart, removeFromCart,updateQuantity } from '../redux/actions'; // תוכל להתאים לפעולות שלך
+import { clearCart, removeFromCart, updateQuantity } from '../redux/actions';
 import { add_his } from '../redux/historyActions';
 import { addHistory } from '../axios/historyAxios';
 import { useNavigate } from 'react-router-dom';
 
-
 export const YourBag = () => {
   const dispatch = useDispatch();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.myCart.cart);
-  const currentUser=useSelector(state=>state.users.currentUser)
-  const isConnect=useSelector(state=>state.users.isConnect)
-  const [message,setMessage]=useState("")
+  const currentUser = useSelector(state => state.users.currentUser);
+  const isConnect = useSelector(state => state.users.isConnect);
+  const [message, setMessage] = useState("");
 
-  console.log(currentUser+"current user!!!")
+  console.log(currentUser + "current user!!!");
   useEffect(() => {
-    console.log(cart);  
+    console.log(cart);
   }, [cart]);
 
- 
   const handleQuantityChange = (id, newQuantity) => {
     if (newQuantity >= 1 && newQuantity <= 10) {
       dispatch(updateQuantity(id, newQuantity));
@@ -27,48 +25,47 @@ export const YourBag = () => {
   };
 
   const handleRemoveFromCart = (id) => {
-    console.log(id)
-      dispatch(removeFromCart(id));
-   
-
+    console.log(id);
+    dispatch(removeFromCart(id));
   };
+
   const handleDecrement = (item) => {
     if (item.quantity > 1) {
-      dispatch(updateQuantity(item._id, item.quantity - 1));  
+      dispatch(updateQuantity(item._id, item.quantity - 1));
     }
   };
-
 
   const handleIncrement = (item) => {
     if (item.quantity < 10) {
-      dispatch(updateQuantity(item._id, item.quantity + 1));  
+      dispatch(updateQuantity(item._id, item.quantity + 1));
     }
   };
-
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
-  const saveBuy=()=>{
-    if(!isConnect){
-        setMessage("אינך מחובר")
-        return;
+  const saveBuy = () => {
+    if (!isConnect) {
+      setMessage("אינך מחובר");
+      return;
     }
-  if(message==""){
-    let arr=[];
+    if (message == "") {
+      let arr = [];
 
-    for (let i = 0; i < cart.length; i++) {
-        arr.push({code:cart[i]._id,name:cart[i].name,sum:cart[i].price*cart[i].quantity})
-        
+      for (let i = 0; i < cart.length; i++) {
+        arr.push({ code: cart[i]._id, name: cart[i].name, sum: cart[i].price * cart[i].quantity });
+      }
+      let obj = { codeClent: currentUser._id, arr_game: arr };
+      addHistory(obj)
+        .then((x) => {
+          console.log(x);
+          dispatch(clearCart());
+          navigate('/myPersonal');
+        })
+        .catch((err) => console.log(err));
     }
-    let obj={codeClent:currentUser._id,arr_game:arr}
-       addHistory(obj)
-       .then((x)=>{console.log(x);dispatch(clearCart());navigate('/myPersonal');})
-       .catch((err)=>{console.log(err)})
-}
-        
-  }
+  };
 
   return (
     <div className="container">
@@ -90,7 +87,7 @@ export const YourBag = () => {
               </tr>
             </thead>
             <tbody>
-              {cart.map((item,index) => (
+              {cart.map((item, index) => (
                 <tr key={index}>
                   <td>
                     <img src={item.pic} alt={item.name} style={{ width: '80px', height: 'auto' }} />
@@ -137,14 +134,13 @@ export const YourBag = () => {
         </div>
       )}
 
-     
       <div className="mt-4">
         <h4>סך הכול: {calculateTotal()} ₪</h4>
-        <button className="btn btn-primary mt-2"onClick={saveBuy} >לצאת לסיום רכישה</button>
-        {message &&<p className='text text-danger'>{message}</p>}
+        <button className="btn btn-primary mt-2" onClick={saveBuy}>
+          לצאת לסיום רכישה
+        </button>
+        {message && <p className="text text-danger">{message}</p>}
       </div>
     </div>
   );
 };
-
-
