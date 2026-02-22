@@ -31,6 +31,7 @@ jobs:
         env:
           # For GitHub Pages project site: https://<user>.github.io/<repo>/
           PUBLIC_URL: /${{ github.event.repository.name }}
+          API_URL: ${{ secrets.API_URL }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
