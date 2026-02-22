@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url="http://localhost:9090/category"
+const url=process.env.REACT_APP_API_URL+"/category"
 
 export const addCategory=(obj)=>{
     return axios.post(`${url}/add`,obj)

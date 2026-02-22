@@ -1,0 +1,11 @@
+export { HomePage } from './HomePage';
+export { GameList } from './GameList';
+export { GameAdd } from './GameAdd';
+export { GameDetails } from './GameDetails';
+export { CategoryList } from './CategoryList';
+export { CategoryAdd } from './CategoryAdd';
+export { Registration } from './Registration';
+export { Login } from './Login';
+export { Cart } from './Cart';
+export { Personal } from './Personal';
+export { PersonalOrder } from './PersonalOrder';

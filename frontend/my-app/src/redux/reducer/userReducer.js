@@ -14,11 +14,11 @@ export const userReducer = produce((state, action) => {
         break;
 
     case "LOG_IN":
-      if(action.payload.x=="m"){
+      if(action.payload.x==="m"){
           state.isManeger=true
           state.isConnect=true
       }
-      else if(action.payload.x=="u"){
+      else if(action.payload.x==="u"){
           state.isConnect=true
           state.isManeger=false
           state.currentUser=action.payload.user

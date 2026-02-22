@@ -19,7 +19,8 @@ export const mystore={
         ...action.payload,
       };
         break;
-      case "DELETE_CAT":{state.listCat=state.listCat.filter(x=>x._id!=action.payload);console.log("llist category"+state.listCat)}
+      case "DELETE_CAT":state.listCat=state.listCat.filter(x=>x._id!==action.payload);
+        break;
       default:
        break;
     }

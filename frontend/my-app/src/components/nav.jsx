@@ -1,15 +1,14 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-export const Nav = () => {
-  const isManeger = useSelector(x => x.users.isManeger);
-  const isConnect = useSelector(x => x.users.isConnect);
+export function Nav() {
+  const isManager = useSelector((state) => state.users.isManeger);
+  const isConnected = useSelector((state) => state.users.isConnect);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark app-nav">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand fw-bold" to="/">
           Game App
         </Link>
         <button
@@ -21,66 +20,72 @@ export const Nav = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            {isManeger && (
-              <li className="nav-item">
-                <Link className="nav-link" to="myAddGame">
-                  הוספת משחק
-                </Link>
-              </li>
-            )}
-            {isManeger && (
-              <li className="nav-item">
-                <Link className="nav-link" to="myAddKategory">
-                  הוספת קטגוריה
-                </Link>
-              </li>
-            )}
-            {isConnect && (
-              <li className="nav-item">
-                <Link className="nav-link" to="myListKategory">
-                  קטגוריות
-                </Link>
-              </li>
-            )}
+          <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="myListGame">
+              <Link className="nav-link" to="/myListGame">
                 משחקים
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="myBag">
+              <Link className="nav-link" to="/myBag">
                 עגלה
               </Link>
             </li>
-            {isConnect && (
+            {isConnected && (
               <li className="nav-item">
-                <Link className="nav-link" to="myPersonal">
+                <Link className="nav-link" to="/myListKategory">
+                  קטגוריות
+                </Link>
+              </li>
+            )}
+            {isConnected && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/myPersonal">
                   אזור אישי
                 </Link>
               </li>
             )}
-            {isConnect && (
-              <li className="nav-item ">
-                <Link className="nav-link"> ברוך הבא</Link>
+            {isManager && (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/myAddGame">
+                    הוספת משחק
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/myAddKategory">
+                    הוספת קטגוריה
+                  </Link>
+                </li>
+              </>
+            )}
+          </ul>
+          <ul className="navbar-nav">
+            {!isConnected && (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/myRegistration">
+                    הרשמה
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/mylogin">
+                    התחברות
+                  </Link>
+                </li>
+              </>
+            )}
+            {isConnected && (
+              <li className="nav-item">
+                <span className="nav-link text-muted">ברוך הבא</span>
               </li>
             )}
-            <li className="nav-item">
-              <Link to="/myRegistration" className="nav-link">
-                הרשמה
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/mylogin" className="nav-link">
-                התחברות
-              </Link>
-            </li>
           </ul>
         </div>
       </div>
     </nav>
   );
-};
+}

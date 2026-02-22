@@ -16,8 +16,9 @@ export const mystore = {
        ...action.payload,
      };
        break;
-     case "DELETE_GAME":{state.listGame=state.listGame.filter(x=>x._id!=action.payload);}
-     default:
+case "DELETE_GAME":state.listGame=state.listGame.filter(x=>x._id!==action.payload);
+        break;
+      default:
         break;
     }
   },mystore)

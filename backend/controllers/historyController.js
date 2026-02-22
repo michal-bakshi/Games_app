@@ -11,7 +11,7 @@ export default{
         .catch((err)=>{res.status(400).send(err.message)})
         
     },
-    gellAll:(req,res)=>{
+    getAll: (req, res) => {
         const id =req.params.id
       
         historySchema.find({codeClent:id})

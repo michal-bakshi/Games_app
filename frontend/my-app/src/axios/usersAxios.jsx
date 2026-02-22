@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url="http://localhost:9090/user"
+const url=process.env.REACT_APP_API_URL+"/user"
 
 export const addUser=(user)=>{
     return axios.post(`${url}/add`,user)

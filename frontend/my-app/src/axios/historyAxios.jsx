@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url="http://localhost:9090/history"
+const url=process.env.REACT_APP_API_URL+"/history"
 
 export const addHistory=(obj)=>{
     return axios.post(`${url}/add/`,obj)

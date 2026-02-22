@@ -10,7 +10,7 @@ export default{
      .then((g)=>res.status(200).send(g))
      .catch((error)=> res.status(400).send(error.message))
   },
-  getByCaterory:(req,res)=>{
+  getByCategory: (req, res) => {
     gameSchema.find({code_Category:req.params.cid})
     .then((g)=>res.status(200).send(g))
     .catch((error)=> res.status(400).send(error.message))

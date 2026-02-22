@@ -8,10 +8,9 @@ import hr from './route/historyRoute.js'
 import cors from 'cors';
 
 dotenv.config();
-const app=express()
+const app = express();
 app.use(cors());
-
-
+app.use(express.json());
 
 app.listen(process.env.PORT || 9090,()=>{
     console.log("server run")
