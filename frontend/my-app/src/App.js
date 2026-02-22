@@ -6,9 +6,10 @@ import { Nav } from './components/nav';
 import { AppRouting } from './components/AppRouting';
 
 function App() {
+  const basename = process.env.PUBLIC_URL || '/';
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <div className="App">
           <Nav />
           <main className="App-main">
