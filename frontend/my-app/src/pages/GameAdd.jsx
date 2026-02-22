@@ -5,16 +5,18 @@ import { addGame, update } from '../axios/gameAxios';
 import { add_game, updateGame } from '../redux/gameActions';
 
 const GAME_IMAGE_OPTIONS = [
-  { value: 'למהכובע.jpg', label: 'למהכובע' },
-  { value: 'שחמט.jpg', label: 'שחמט' },
-  { value: 'מונופול.jpg', label: 'מונופול' },
-  { value: 'לינק.jpg', label: 'לינק' },
-  { value: 'מפלצת.jpg', label: 'מפלצת' },
-  { value: 'תפוסתקלף.jpg', label: 'תפוסתקלף' },
-  { value: 'רמיקוב.jpg', label: 'רמיקוב' },
-  { value: 'חתחתול.jpg', label: 'חתחתול' },
-  { value: 'ארץעיר.jpg', label: 'ארץעיר' },
-  { value: 'נחשמי.jpg', label: 'נחשמי' },
+  { value: 'llama.jpg',          label: 'Llama' },
+  { value: 'chess.jpg',          label: 'Chess' },
+  { value: 'monopoly.jpg',       label: 'Monopoly' },
+  { value: 'link.jpg',           label: 'Link' },
+  { value: 'monster.jpg',        label: 'Monster' },
+  { value: 'card-grab.png',      label: 'Card Grab' },
+  { value: 'rummikub.jpg',       label: 'Rummikub' },
+  { value: 'cat-game.jpg',       label: 'Cat Game' },
+  { value: 'eretz-ir.jpg',       label: 'Eretz Ir' },
+  { value: 'snakes-ladders.jpg', label: 'Snakes & Ladders' },
+  { value: 'taki.jpg',           label: 'Taki' },
+  { value: 'mancala.jpg',        label: 'Mancala' },
 ];
 
 export function GameAdd() {
