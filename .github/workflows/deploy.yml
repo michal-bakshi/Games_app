@@ -1,5 +1,6 @@
 # Deploy frontend (React) to GitHub Pages.
 # In repo Settings → Pages → Source: choose "GitHub Actions".
+# Trigger rebuild: 2025-01-29
 name: Deploy to GitHub Pages
 
 on:
@@ -25,8 +26,21 @@ jobs:
         run: npm ci
         working-directory: ./frontend/my-app
 
+      - name: Check env secret is set
+        run: |
+          if [ -z "$REACT_APP_API_URL" ]; then
+            echo "ERROR: REACT_APP_API_URL secret is empty or not set!"
+            exit 1
+          else
+            echo "REACT_APP_API_URL is set (value hidden)"
+          fi
+        env:
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+
       - name: Build
-        run: npm run build
+        run: |
+          echo "API URL is: $REACT_APP_API_URL"
+          npm run build
         working-directory: ./frontend/my-app
         env:
           # For GitHub Pages project site: https://<user>.github.io/<repo>/
