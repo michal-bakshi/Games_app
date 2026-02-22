@@ -1,7 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Button, Container } from 'react-bootstrap';
-import { config } from '../config';
 import { addToCart } from '../redux/actions';
 
 export function GameDetails() {
@@ -32,7 +31,7 @@ export function GameDetails() {
       <div className="game-details-page">
         <div className="text-center mb-4">
           <img
-            src={config.imageUrl(`${game.pic}`)}
+            src={`${process.env.REACT_APP_API_URL}/${game.pic}`}
             alt={game.name}
             className="img-fluid game-details-img"
           />

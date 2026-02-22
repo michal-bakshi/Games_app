@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { config } from '../config';
 import { deleteGameById, getAllGames, getGameByKatId } from '../axios/gameAxios';
 import { deleteGame, getTheAllGames } from '../redux/gameActions';
 import { getAllCat } from '../axios/categoryAxios';
@@ -82,7 +81,7 @@ export function GameList() {
               <div className="card game-card">
                 <div className="card-img-wrapper d-flex justify-content-center align-items-center">
                   <img
-                    src={config.imageUrl(`${game.pic}`)}
+                    src={`${process.env.REACT_APP_API_URL}/${game.pic}`}
                     className="card-img-top game-card-img"
                     alt={game.name}
                   />
