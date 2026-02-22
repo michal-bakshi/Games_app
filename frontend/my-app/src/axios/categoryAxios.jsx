@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const url=process.env.REACT_APP_API_URL+"/category"
+console.log(url)
 
 export const addCategory=(obj)=>{
     return axios.post(`${url}/add`,obj)
