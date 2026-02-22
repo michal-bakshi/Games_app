@@ -42,7 +42,7 @@ export function GameDetails() {
           <p><strong>קוד משחק:</strong> {game._id}</p>
           <p><strong>מחיר:</strong> {game.price} ₪</p>
           <div className="mt-4">
-            <Button variant="success" className="me-2" onClick={handleAddToCart}>
+            <Button variant="success" className="m-2" onClick={handleAddToCart}>
               הוסף לסל
             </Button>
             <Button variant="primary" onClick={() => navigate(-1)}>
