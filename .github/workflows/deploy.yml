@@ -38,10 +38,13 @@ jobs:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
 
       - name: Build
-        run: |
-          echo "API URL is: $REACT_APP_API_URL"
-          npm run build
         working-directory: ./frontend/my-app
+        run: |
+          if [ -z "$REACT_APP_API_URL" ]; then
+            echo "ERROR: REACT_APP_API_URL is missing!"
+            exit 1
+          fi
+          npm run build
         env:
           # For GitHub Pages project site: https://<user>.github.io/<repo>/
           PUBLIC_URL: /${{ github.event.repository.name }}
