@@ -32,7 +32,7 @@ export function GameDetails() {
       <div className="game-details-page">
         <div className="text-center mb-4">
           <img
-            src={config.imageUrl(game.pic)}
+            src={config.imageUrl(`${game.pic}`)}
             alt={game.name}
             className="img-fluid game-details-img"
           />

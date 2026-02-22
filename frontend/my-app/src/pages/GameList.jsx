@@ -82,7 +82,7 @@ export function GameList() {
               <div className="card game-card">
                 <div className="card-img-wrapper d-flex justify-content-center align-items-center">
                   <img
-                    src={config.imageUrl(game.pic)}
+                    src={config.imageUrl(`${game.pic}`)}
                     className="card-img-top game-card-img"
                     alt={game.name}
                   />
